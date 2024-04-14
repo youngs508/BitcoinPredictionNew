@@ -3,17 +3,17 @@ import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-n
 function Header({ navigation, label, image, caption }) {
 
     return (
-        <View style={{ width: '100%', borderWidth: 1, flexDirection: 'row', borderRadius: 5, justifyContent: 'space-between' }}>
-            <View style={{right: -20, height: 40}}>
+        <View style={{ width: '100%', borderWidth: 0.5, flexDirection: 'row', justifyContent: 'space-between', backgroundColor:'#C1E1C5' }}>
+            <View style={{right: -20}}>
                 <Text style={styles.labelFont}>
                     {label}
                 </Text>
                 <Text> {caption} </Text>
             </View>
             {
-                (label == "Prediction") ?
+                (image == "Correlation") ?
                     <Image style={{ width: 35, height: 35, tintColor: '#009688', left: -20 }} source={require('../images/graph-line.png')} />
-                    : (label == "Correlation") ?
+                    : (image == "Prediction") ?
                         <Image style={{ width: 35, height: 35, tintColor: '#009688', left: -20 }} source={require('../images/graph-bar.png')} />
                         :
                         <Image style={{ width: 35, height: 35, tintColor: '#009688', left: -20 }} source={require('../images/broadcast.png')} />
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         alignContent: 'center',
-        borderBottomWidth: 1
     },
     predictedContainerLabel: {
         flexDirection: 'row',
@@ -41,7 +40,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         alignContent: 'center',
-        borderBottomWidth: 1,
         width: '100%',
 
     },

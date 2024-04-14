@@ -1,28 +1,25 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
 import FilterButton from '../components/FilterButton';
 import Result from '../components/Result';
 import Header from '../components/Header';
+import Table from '../components/Table';
+import TableHeader from '../components/TableHeader';
+import RefreshButton from '../components/RefreshButton';
 function PredictorScreen({ navigation }) {
     return (
         <View style={styles.pageOrganizer}>
-
             <View style={styles.header}>
                 <Text style={styles.titleFont}>Marchine Learning for Bitcoin Price Prediction</Text>
+                <RefreshButton label="Refresh"/>
             </View>
-
             <View style={styles.grapOrganizer}>
-
+                {
+                    //First Panel
+                }
                 <View style={styles.predictorView}>
-
                     <View style={styles.predictorBackground}>
-                        {
-                            //Prediction 
-                        }
-                        <Header label="Prediction" caption="Bitcoin price prediction via linear regression" />
-                        {
-                            //Prediction  
-                        }
+                        <Header label="Prediction" caption="Bitcoin price prediction via linear regression" image="Prediction" />
                         <View style={styles.filter}>
                             <FilterButton label="Monthly" />
                             <FilterButton label="Weekly" />
@@ -33,7 +30,7 @@ function PredictorScreen({ navigation }) {
                         {
                             //Analysis 
                         }
-                        <Header label="Analysis" caption="Bitcoin price prediction via linear regression" />
+                        <Header label="Analysis" caption="Bitcoin price prediction via linear regression" image="Analyis"/>
                         {
                             //Prediction Analysis 
                         }
@@ -44,32 +41,52 @@ function PredictorScreen({ navigation }) {
 
                     </View>
                 </View>
-
-                <View style={styles.correlationView}>
-
-                    <View style={styles.correlation}>
-                        {
-                            //Correlation 
-                        }
-                        <Header label="Correlation" caption="Correlation Ethereum vs Bitcoin" image="graph-bar.png" />
-                        {
-                            //Correlation 
-                        }
-                        <View style={styles.containerHeader}>
-                            <Text style={styles.labelFont}>
-                                Correlation Ethereum vs Bitcoin
-                            </Text>
+                {
+                    //Second Panel
+                }
+                <View style={{ width: '60%', height: '99%', justifyContent: 'space-around' }}>
+                    <View style={{ borderWidth: 1, width: '100%', height: '49%', }}>
+                        <Header label="History" caption="Correlation Ethereum vs Bitcoin" image="History" />
+                        <View style={{ width: '99%', top: 5, alignSelf: 'center' }}>
+                            <TableHeader />
+                            <ScrollView style={{ height: 250 }}>
+                                <Table label="Apr 1" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                                <Table label="Apr 2" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                                <Table label="Apr 3" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                                <Table label="Apr 4" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                                <Table label="Apr 5" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                                <Table label="Apr 3" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                                <Table label="Apr 4" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                                <Table label="Apr 5" predictedPrice="$12,345" actualPrice={"$13,123"} difference="$3212" accuracy="80%" />
+                            </ScrollView>
                         </View>
                     </View>
-                    <View style={styles.correlation}>
-                        <View style={styles.containerHeader}>
-                            <Text style={styles.labelFont}>
-                                Correlation S&P 500 vs Bitcoin
-                            </Text>
+
+                    <View style={styles.correlationView}>
+
+                        <View style={{ height: '100%', width: '50%', borderWidth: 1 }}>
+                            <View style={styles.correlation}>
+                                <Header label="Correlation S&P 500 vs Bitcoin" caption="Correlation S&P 500 vs Bitcoin" image="Correlation" />
+                                <View>
+                                    <Text>Graph</Text>
+                                </View>
+                            </View>
                         </View>
+
+                        <View style={{ height: '100%', width: '49%', borderWidth: 1 }}>
+                            <View style={styles.correlation}>
+                                <Header label="Correlation Ethereum vs Bitcoin" caption="Ethereum vs Bitcoin" image="Correlation"/>
+                                <View>
+                                    <Text>Graph</Text>
+                                </View>
+                            </View>
+                        </View>
+
+
                     </View>
                 </View>
             </View>
+
         </View>
 
     );
@@ -77,9 +94,11 @@ function PredictorScreen({ navigation }) {
 const styles = StyleSheet.create({
     header: {
         alignSelf: 'center',
-        width: '95%',
+        width: '100%',
         height: '7%',
         backgroundColor: '#FCCB00',
+        justifyContent: 'space-between',
+        flexDirection: 'row'
     },
     titleFont: {
         fontSize: 30,
@@ -87,10 +106,9 @@ const styles = StyleSheet.create({
     },
     predictionContainer: {
         alignSelf: 'flex-start',
-        width: '95%',
+        width: '100%',
         borderWidth: 1,
         alignSelf: 'center',
-        borderRadius: 10
     },
 
     labelFont: {
@@ -98,57 +116,45 @@ const styles = StyleSheet.create({
     },
     pageOrganizer: {
         height: '100%',
-        width: '100%',
-        backgroundColor: 'white',
+        width: '99%',
         alignItems: 'center',
     },
     correlationView: {
-        height: '100%',
-        width: '48%',
-        alignItems: 'center',
+        height: '50%',
+        width: '100%',
+        flexDirection: 'row',
         justifyContent: 'space-around'
     },
     predictorView: {
-        height: '100%',
-        width: '50%',
+        height: '99%',
+        width: '39%',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        borderWidth: 1,
     },
     correlation: {
-        borderWidth: 1,
-        borderRadius: 10,
         width: '100%',
-        height: '45%',
+        borderWidth: 1
     },
     grapOrganizer: {
         flexDirection: 'row',
         height: '90%',
-        width: '95%',
+        width: '100%',
         justifyContent: 'space-around',
         alignItems: 'center',
-        borderWidth: 1
+        borderWidth: 1,
     },
     predictorBackground: {
         borderWidth: 1,
-        borderRadius: 10,
-        width: '95%',
+        width: '100%',
         height: '55%',
-
     },
     containerHeader: {
         width: '100%',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        alignSelf: 'center',
         alignItems: 'flex-start',
-        backgroundColor: "#419BFE"
-
     },
     filter: {
         flexDirection: 'row',
         width: '100%',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
         alignSelf: 'center',
         justifyContent: 'space-evenly',
         alignItems: 'center',
