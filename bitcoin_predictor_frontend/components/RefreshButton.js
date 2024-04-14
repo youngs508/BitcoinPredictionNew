@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
-function FilterButton({ navigation, label}) {
+function RefreshButton({ navigation, label}) {
     return (
         <TouchableOpacity style={styles.button}>
             <Text style={styles.titleFont}>{label}</Text>
@@ -9,16 +9,19 @@ function FilterButton({ navigation, label}) {
 }
 const styles = StyleSheet.create({
     titleFont: {
-        fontSize: 22,
+        fontSize: 18,
+        textAlign: 'center',
     },
     button:{
         borderWidth: 1,
-        height: '90%', 
-        width:'30%',
+        height: '50%', 
+        width:'5%',
         backgroundColor: '#DBDBDB', 
+        alignSelf: 'center',
         alignItems: 'center',
-        justifyContent: 'center',
+
+        right: 10,
     }
 });
 
-export default FilterButton;
+export default RefreshButton;
