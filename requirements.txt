@@ -1,0 +1,12 @@
+# requirements.txt
+
+numpy 
+pandas
+uvicorn
+matplotlib
+warnings
+seaborn
+random
+typing
+Predictor
+fastapi
